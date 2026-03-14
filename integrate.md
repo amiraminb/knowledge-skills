@@ -12,10 +12,11 @@ The wiki should have two layers:
 
 ### 1. Scan the knowledge base
 
-Read the wiki at `~/wiki/` to understand what already exists:
-- Read `Articles/index.md` and `Books/index.md` for the catalog
+First discover the current wiki structure instead of assuming one:
+- Confirm the wiki root from user input or infer it from provided file paths
+- Find `index.md` files and section directories (for example: source collections, topics, notes)
 - Read existing summaries and topic pages to understand what topics are covered
-- Look at directory structure for any topic-level files
+- Identify where topic pages currently live, and treat that as canonical unless the user wants to change it
 
 ### 2. Find related content
 
@@ -43,12 +44,23 @@ Based on what exists, suggest one of these paths:
 **Path B: Multiple sources exist, no topic page yet**
 - Create a source summary for the new content
 - Create a new topic page that synthesizes learnings from all related sources (existing + new)
-- Update `Articles/index.md` or `Books/index.md` to link to the new source summary
+- Update the relevant source index to link to the new source summary
+- Add the new topic page to the topic index
 
 **Path C: Topic page already exists**
 - Create a source summary for the new content
 - Update the existing topic page with new learnings from this source
 - Add a link to the new source summary in the topic page's sources section
+- Ensure the topic index links to the topic page
+
+### 5. Canonical path and renames
+
+Before creating a new topic page, check for existing topic pages that may already cover the same concept under a different filename or path.
+
+- If a likely duplicate exists, propose consolidation instead of creating a second page
+- If the canonical location has changed, propose a rename/move plan before writing
+- For approved renames/moves, update links across the wiki to the new canonical path
+- Preserve discoverability by keeping frontmatter aliases accurate after rename/move
 
 Always ask the user which path they want before writing files.
 
@@ -103,4 +115,6 @@ review: false
 4. **Link both ways** - Topic pages link to source summaries. Source summaries don't need to link back (they're standalone), but can if it helps.
 5. **Don't force topic pages** - One source on a topic doesn't need a topic page. Wait until there are at least 2-3 sources that share a theme.
 6. **Preserve attribution** - When a specific insight comes from a specific source, note it (e.g., "per [Source Title], ...") so you can trace ideas back.
-
+7. **Follow the wiki's existing structure** - Detect current section layout and index conventions; do not assume fixed folders like `Articles/` or `Books/`.
+8. **Keep topics source-agnostic** - Topic pages should live in a dedicated topics section (for example `Topics/`), not inside a source-type folder.
+9. **Treat path changes as migrations** - For rename/move operations, update inbound links and keep aliases aligned with old names.

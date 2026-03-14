@@ -1,6 +1,8 @@
 # Organize
 
-Audit and maintain the structure of the personal wiki at `~/wiki/`. Keep indexes accurate, links consistent, and the knowledge base easy to navigate as it grows.
+Audit and maintain the structure of a personal wiki. Keep indexes accurate, links consistent, and the knowledge base easy to navigate as it grows.
+
+Start by detecting the wiki root and current structure from the user's paths and existing files. Do not assume fixed directory names.
 
 ## When to use
 
@@ -65,9 +67,18 @@ Files that have frontmatter but no real content (e.g., just a title or a link wi
 
 Check that the root `index.md` accurately reflects the current top-level directories and their index files.
 
-- Compare directories listed in `~/wiki/index.md` against actual directories
+- Compare directories listed in the root `index.md` against actual directories
 - Report any directory that exists but isn't linked from root index
 - Report any link in root index pointing to a nonexistent directory or file
+
+### 8. Canonical paths and rename drift
+
+Detect pages that were likely renamed or moved, but links and references were not fully migrated.
+
+- Find links still pointing to old paths when a canonical page now exists elsewhere
+- Report files with overlapping identities (same `id`, same title, or alias collisions)
+- Flag probable duplicates that should be merged into one canonical page
+- **Suggestion:** Pick one canonical path, update all inbound links, and keep aliases/frontmatter aligned
 
 ## Output format
 
@@ -77,12 +88,12 @@ Present findings as a structured report:
 ## Wiki Health Report
 
 ### Critical (broken things)
-- [ ] Broken link: `KOHO/index.md` links to `[[KOHO/Notes/AuthDemo.md]]` but file does not exist
+- [ ] Broken link: `Teams/index.md` links to `[[Teams/Notes/auth-demo]]` but file does not exist
 - [ ] ...
 
 ### Warnings (inconsistencies)
-- [ ] Orphaned file: `Articles/some-file.md` not linked from any index
-- [ ] Stub file: `Articles/estimating-software-projects.md` has no content beyond title
+- [ ] Orphaned file: `Sources/some-file.md` not linked from any index
+- [ ] Stub file: `Sources/estimating-software-projects.md` has no content beyond title
 - [ ] ...
 
 ### Suggestions (improvements)
@@ -107,6 +118,7 @@ After presenting the report, ask the user which issues they want to fix. Then:
 3. **Normalize link format** — rewrite links to use the dominant style
 4. **Add frontmatter** — add missing fields to files that need them
 5. **Flag stubs** — mark empty files with a `<!-- TODO: add content -->` comment or remove them per user preference
+6. **Canonicalize renamed pages** — migrate links to canonical paths and resolve duplicate identities
 
 Never delete files or remove content without explicit user confirmation. When in doubt, ask.
 
@@ -117,7 +129,8 @@ These are the wiki's structural conventions. The organize skill enforces them:
 1. **Every directory with content needs an `index.md`** that serves as the entry point
 2. **Root `index.md`** links to all top-level sections
 3. **Section indexes** link to all files within that section
-4. **Topic pages** (from the `integrate` skill) live in `~/wiki/Articles/topics/` and are linked from `Articles/index.md` under a `## Topics` section
-5. **Source summaries** live in `~/wiki/Articles/` or `~/wiki/Books/` and are linked from their respective index
+4. **Topic pages** (from the `integrate` skill) live in a dedicated topics section and are linked from that section's index
+5. **Source summaries** live in source-specific sections (for example articles/books/videos) and are linked from their respective index
 6. **Wiki-links use consistent format** — pick one style (with or without `.md`) and stick to it
 7. **Frontmatter is always present** on content files with at least `id`, `tags`, `review`
+8. **Canonical path per page identity** — each knowledge page has one canonical file path; aliases and old names should redirect via links/frontmatter, not duplicate pages
