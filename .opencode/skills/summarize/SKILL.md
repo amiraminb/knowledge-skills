@@ -1,4 +1,12 @@
-# Summarize
+---
+name: summarize
+description: Create structured source summaries for long-term recall and provide immediate wiki integration actions.
+license: MIT
+compatibility: opencode
+metadata:
+  audience: personal-knowledge-wiki
+  workflow: summarize-and-integrate
+---
 
 Create a structured summary of content (article, book, book chapter, video, podcast, talk, etc.) for a personal knowledge wiki. The summary must be written so that re-reading it in 5 years brings the material back to life - not just the gist, but the important details, arguments, and examples. The summary should not be too long. It should be simple to read and to the point.
 
@@ -46,7 +54,7 @@ review: false
 
 ## Key points
 
-<Break into logical sections with descriptive headings. Each section should cover one major point or argument. Use bullet points for supporting details, examples, and evidence. Preserve specific numbers, names, frameworks, analogies, and stories — these are what trigger memory years later.>
+<Break into logical sections with descriptive headings. Each section should cover one major point or argument. Use bullet points for supporting details, examples, and evidence. Preserve specific numbers, names, frameworks, analogies, and stories - these are what trigger memory years later.>
 
 ### <Point 1 heading>
 - ...
@@ -82,7 +90,7 @@ review: false
 * The big idea of the chapter is: **<one sentence>**
 * <Key concepts, arguments, and details as bullet points>
 * Memory hook: **<a short phrase that encodes the chapter's pattern>**
-* <Important frameworks, models, or terminology — explained, not just named>
+* <Important frameworks, models, or terminology - explained, not just named>
 * <Specific examples, stories, or data that support the main points>
 * <Warnings, counterarguments, or nuances the author raises>
 
@@ -93,7 +101,7 @@ review: false
 ---
 
 # Whole Book in One Screen
-* <Bullet-point synthesis of the entire book — the ideas that matter most, compressed into a single scrollable section>
+* <Bullet-point synthesis of the entire book - the ideas that matter most, compressed into a single scrollable section>
 * <Key frameworks and how they connect>
 * <The book's ultimate argument or lesson>
 ```
@@ -101,7 +109,7 @@ review: false
 ## Quality rules
 
 1. **No fluff** - Every sentence must earn its place. Cut filler words and generic statements.
-2. **Preserve specifics** - Names, numbers, dates, framework names, technical terms, story details. These are what make a summary useful years later. A summary that says "the author gives an example" is useless — say what the example is.
+2. **Preserve specifics** - Names, numbers, dates, framework names, technical terms, story details. These are what make a summary useful years later. A summary that says "the author gives an example" is useless - say what the example is.
 3. **Explain, don't just name** - Don't write "The author introduces the XYZ framework." Write what the XYZ framework is and how it works.
 4. **Use memory hooks** - For each major section or chapter, include a short bold phrase that encodes the pattern. These work like mnemonics.
 5. **Keep the author's structure when it's good** - If the original has a clear logical flow, follow it. Don't reorganize for the sake of reorganizing.
@@ -110,8 +118,21 @@ review: false
 8. **Blockquote key takeaways** - Use `>` blockquotes for chapter/section takeaways to make them visually scannable.
 9. **Length should match depth** - A 5-minute article gets a focused summary. A 400-page book gets a thorough one. Don't compress a complex book into a page, and don't inflate a simple article into an essay.
 
+## Integration step (at the end)
+
+After the summary is complete, run a lightweight integration handoff using the `integrate` skill mindset:
+
+1. Identify where this summary should live in the user's wiki structure.
+2. List related existing notes or topic pages (if paths are available).
+3. Recommend one of these outcomes:
+   - Keep as a standalone source summary only.
+   - Add to an existing topic page.
+   - Create a new topic page once there are enough related sources.
+4. End with a short **Next integration action** section (2-4 bullets) so the user can immediately apply it.
+
+If the user did not provide wiki context or file paths, still provide a generic **Next integration action** section with assumptions clearly stated.
+
 ## File naming
 
 - Use underscores for book titles: `The_Pragmatic_Programmer.md`
 - Use kebab-case for articles/videos: `arts-of-reading-the-docs.md`
-

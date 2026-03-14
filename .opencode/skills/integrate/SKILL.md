@@ -1,6 +1,14 @@
-# Integrate
+---
+name: integrate
+description: Connect new sources to existing wiki knowledge and recommend the right synthesis path.
+license: MIT
+compatibility: opencode
+metadata:
+  audience: personal-knowledge-wiki
+  workflow: source-to-topic-integration
+---
 
-When the user reads, watches, or listens to something new, scan their knowledge base to find related content and suggest how to weave the new material into their existing knowledge — both as a standalone summary and as part of a broader topic page.
+When the user reads, watches, or listens to something new, scan their knowledge base to find related content and suggest how to weave the new material into their existing knowledge - both as a standalone summary and as part of a broader topic page.
 
 ## Goal
 
@@ -21,8 +29,8 @@ First discover the current wiki structure instead of assuming one:
 ### 2. Find related content
 
 When the user shares new content (article, video, book, etc.), identify what in their existing wiki is related:
-- Direct topic matches (e.g., new article about 1-on-1 meetings + existing 1-on-1 notes)
-- Overlapping concepts (e.g., new article about feedback + existing notes on radical candor)
+- Direct topic matches (for example, new article about 1-on-1 meetings + existing 1-on-1 notes)
+- Overlapping concepts (for example, new article about feedback + existing notes on radical candor)
 - Complementary or opposing viewpoints
 
 ### 3. Report what you found
@@ -39,7 +47,7 @@ Based on what exists, suggest one of these paths:
 
 **Path A: First source on a new topic**
 - Create a source summary (using the `summarize` skill format)
-- No topic page yet — one source is not enough to synthesize
+- No topic page yet - one source is not enough to synthesize
 
 **Path B: Multiple sources exist, no topic page yet**
 - Create a source summary for the new content
@@ -83,7 +91,7 @@ review: false
 
 ## Key learnings
 
-<The synthesized knowledge from all sources, organized by theme — not by source. Write it as if you are explaining the topic to yourself in 5 years. Use bullet points. Be direct.>
+<The synthesized knowledge from all sources, organized by theme - not by source. Write it as if you are explaining the topic to yourself in 5 years. Use bullet points. Be direct.>
 
 ### <Theme 1>
 - <Learning point>
@@ -97,7 +105,7 @@ review: false
 
 ## Where sources disagree
 
-<If different sources contradict each other or offer different perspectives, note that here. This is valuable — it shows you the full picture, not just one take. Skip this section if all sources align.>
+<If different sources contradict each other or offer different perspectives, note that here. This is valuable - it shows you the full picture, not just one take. Skip this section if all sources align.>
 
 ## Sources
 
@@ -114,7 +122,7 @@ review: false
 3. **Topic pages are living documents** - They grow as more sources are added. New learnings get woven into the existing structure, not appended at the bottom.
 4. **Link both ways** - Topic pages link to source summaries. Source summaries don't need to link back (they're standalone), but can if it helps.
 5. **Don't force topic pages** - One source on a topic doesn't need a topic page. Wait until there are at least 2-3 sources that share a theme.
-6. **Preserve attribution** - When a specific insight comes from a specific source, note it (e.g., "per [Source Title], ...") so you can trace ideas back.
+6. **Preserve attribution** - When a specific insight comes from a specific source, note it (for example, "per [Source Title], ...") so you can trace ideas back.
 7. **Follow the wiki's existing structure** - Detect current section layout and index conventions; do not assume fixed folders like `Articles/` or `Books/`.
 8. **Keep topics source-agnostic** - Topic pages should live in a dedicated topics section (for example `Topics/`), not inside a source-type folder.
 9. **Treat path changes as migrations** - For rename/move operations, update inbound links and keep aliases aligned with old names.

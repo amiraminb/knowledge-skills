@@ -1,4 +1,12 @@
-# Organize
+---
+name: organize
+description: Audit wiki structure, links, and frontmatter consistency, then report prioritized fixes.
+license: MIT
+compatibility: opencode
+metadata:
+  audience: personal-knowledge-wiki
+  workflow: hygiene-and-maintenance
+---
 
 Audit and maintain the structure of a personal wiki. Keep indexes accurate, links consistent, and the knowledge base easy to navigate as it grows.
 
@@ -44,7 +52,7 @@ Every directory that contains `.md` content files should have an `index.md` that
 
 Wiki-links should use a consistent format throughout the wiki.
 
-- Check if links mix `.md` extensions and bare names (e.g., `[[file.md|label]]` vs `[[file|label]]`)
+- Check if links mix `.md` extensions and bare names (for example, `[[file.md|label]]` vs `[[file|label]]`)
 - Report the dominant style and any deviations
 - **Suggestion:** Normalize to the dominant style
 
@@ -58,10 +66,10 @@ Every content `.md` file should have frontmatter with at minimum: `id`, `tags`, 
 
 ### 6. Empty or stub files
 
-Files that have frontmatter but no real content (e.g., just a title or a link with no summary).
+Files that have frontmatter but no real content (for example, just a title or a link with no summary).
 
 - Report files with fewer than 5 lines of content after frontmatter
-- **Suggestion:** Flag as "needs content" — the user may want to fill these in or remove them
+- **Suggestion:** Flag as "needs content" - the user may want to fill these in or remove them
 
 ### 7. Root-level structure
 
@@ -84,7 +92,7 @@ Detect pages that were likely renamed or moved, but links and references were no
 
 Present findings as a structured report:
 
-```
+```markdown
 ## Wiki Health Report
 
 ### Critical (broken things)
@@ -97,8 +105,8 @@ Present findings as a structured report:
 - [ ] ...
 
 ### Suggestions (improvements)
-- [ ] Directory `Ben/` at wiki root appears to duplicate `Mentorship/Ben/` — consider consolidating
-- [ ] Link format: 73% of links omit `.md`, 27% include it — normalize to omit `.md`
+- [ ] Directory `Ben/` at wiki root appears to duplicate `Mentorship/Ben/` - consider consolidating
+- [ ] Link format: 73% of links omit `.md`, 27% include it - normalize to omit `.md`
 - [ ] ...
 
 ### Summary
@@ -113,12 +121,12 @@ Present findings as a structured report:
 
 After presenting the report, ask the user which issues they want to fix. Then:
 
-1. **Fix broken links** — correct the path or remove the link
-2. **Update indexes** — add missing file entries to the appropriate index
-3. **Normalize link format** — rewrite links to use the dominant style
-4. **Add frontmatter** — add missing fields to files that need them
-5. **Flag stubs** — mark empty files with a `<!-- TODO: add content -->` comment or remove them per user preference
-6. **Canonicalize renamed pages** — migrate links to canonical paths and resolve duplicate identities
+1. **Fix broken links** - correct the path or remove the link
+2. **Update indexes** - add missing file entries to the appropriate index
+3. **Normalize link format** - rewrite links to use the dominant style
+4. **Add frontmatter** - add missing fields to files that need them
+5. **Flag stubs** - mark empty files with a `<!-- TODO: add content -->` comment or remove them per user preference
+6. **Canonicalize renamed pages** - migrate links to canonical paths and resolve duplicate identities
 
 Never delete files or remove content without explicit user confirmation. When in doubt, ask.
 
@@ -131,6 +139,6 @@ These are the wiki's structural conventions. The organize skill enforces them:
 3. **Section indexes** link to all files within that section
 4. **Topic pages** (from the `integrate` skill) live in a dedicated topics section and are linked from that section's index
 5. **Source summaries** live in source-specific sections (for example articles/books/videos) and are linked from their respective index
-6. **Wiki-links use consistent format** — pick one style (with or without `.md`) and stick to it
+6. **Wiki-links use consistent format** - pick one style (with or without `.md`) and stick to it
 7. **Frontmatter is always present** on content files with at least `id`, `tags`, `review`
-8. **Canonical path per page identity** — each knowledge page has one canonical file path; aliases and old names should redirect via links/frontmatter, not duplicate pages
+8. **Canonical path per page identity** - each knowledge page has one canonical file path; aliases and old names should redirect via links/frontmatter, not duplicate pages

@@ -1,10 +1,33 @@
 # Knowledge Skills
 
-Portable AI prompt files for managing a personal knowledge wiki. Works with any AI tool (Claude Code, OpenCode, etc.) — just reference the skill file as a prompt or system instruction.
+Reusable OpenCode skills for managing a personal knowledge wiki.
 
-## Usage
+This repo now includes OpenCode-native skills in `.opencode/skills/*/SKILL.md`, while keeping the original portable prompt files at the repo root.
 
-Point your AI tool at a skill file and provide your input. For example:
+## OpenCode usage (native skills)
+
+OpenCode auto-discovers skills from this repo when run inside it.
+
+Available skills:
+- `summarize`
+- `integrate`
+- `organize`
+
+Use them by name in your prompt. Example:
+
+```
+Use the summarize skill to summarize this article: <url>
+```
+
+Or chain skills:
+
+```
+Use summarize, then integrate the result into my wiki.
+```
+
+## Portable usage (other AI tools)
+
+Point your AI tool at a root prompt file and provide your input. For example:
 
 ```
 Use the instructions in ~/dev/personal/knowledge-skills/summarize.md to summarize this article: <url or pasted text>
@@ -24,17 +47,7 @@ Please scan my wiki and suggest where this should be integrated.
 
 Tip: keep the skill file unchanged and pass your content (URL, notes, or text) in the same prompt.
 
-## Using with OpenCode
-
-Use the same pattern: tell OpenCode to follow one of the skill files, then provide the content to process.
-
-Example:
-
-```
-Use /Users/amir/dev/knowledge-skills/organize.md to audit my wiki and report issues.
-```
-
-You can swap in any skill file:
+You can swap in any root prompt file:
 - `summarize.md` for source summaries
 - `integrate.md` for relating new content to existing notes
 - `organize.md` for structure and link hygiene
