@@ -8,7 +8,7 @@ metadata:
   workflow: source-to-topic-integration
 ---
 
-When the user reads, watches, or listens to something new, scan their knowledge base to find related content and suggest how to weave the new material into their existing knowledge - both as a standalone summary and as part of a broader topic page.
+When the user reads, watches, or listens to something new, or asks for a wiki-wide integration pass, scan their entire knowledge base to find related content and suggest how to weave notes together with Obsidian wiki-links.
 
 ## Goal
 
@@ -16,30 +16,53 @@ The wiki should have two layers:
 1. **Source summaries** - One file per article/book/video. Detailed enough to recall the original in 5 years. Created using the `summarize` skill.
 2. **Topic pages** - One file per topic that synthesizes learnings from multiple sources into a single reference. These are the pages you actually go back to. They link to individual source summaries for deeper reading.
 
+And one ongoing practice:
+3. **Relationship linking** - Existing notes (source summaries, topic pages, evergreen notes, chapter notes) should be cross-linked when they meaningfully relate.
+
 ## Steps
 
-### 1. Scan the knowledge base
+### 1. Scan the whole knowledge base
 
 First discover the current wiki structure instead of assuming one:
 - Confirm the wiki root from user input or infer it from provided file paths
 - Find `index.md` files and section directories (for example: source collections, topics, notes)
 - Read existing summaries and topic pages to understand what topics are covered
 - Identify where topic pages currently live, and treat that as canonical unless the user wants to change it
+- Include all relevant Markdown notes, not just newly added sources
 
-### 2. Find related content
+### 2. Find related content across all notes
 
-When the user shares new content (article, video, book, etc.), identify what in their existing wiki is related:
+For each candidate note, identify what other notes are related:
 - Direct topic matches (for example, new article about 1-on-1 meetings + existing 1-on-1 notes)
 - Overlapping concepts (for example, new article about feedback + existing notes on radical candor)
 - Complementary or opposing viewpoints
+- Source-to-source relationships (for example, a book chapter and an article covering the same mechanism)
+- Source-to-topic relationships (for example, chapter supports an existing synthesis page)
+- Topic-to-topic relationships (for example, adjacent concepts that should cross-reference)
+- Prerequisite, example, and contrast relationships (for example, "foundation for", "case study for", "alternative to")
 
-### 3. Report what you found
+Prioritize high-signal links:
+- Prefer links that improve retrieval and synthesis later
+- Avoid weak keyword-only matches
+- Skip links that would create clutter
+
+### 3. Report proposed links before writing
 
 Tell the user clearly:
 
 **Related content in your wiki:**
-- List each related file with its path and a one-line description of how it connects
-- Note if sources agree, disagree, or complement each other
+- List each related file pair/group with paths and a one-line description of how they connect
+- Note if sources agree, disagree, complement, or provide prerequisite context
+
+**Proposed link actions:**
+- For each proposed edit, show:
+  - Source file path
+  - Target note to link
+  - Anchor text to use
+  - Where to insert (section/paragraph)
+  - Why this link is useful
+
+Do not write files yet. Present this as a reviewable plan.
 
 ### 4. Suggest an action plan
 
@@ -71,6 +94,26 @@ Before creating a new topic page, check for existing topic pages that may alread
 - Preserve discoverability by keeping frontmatter aliases accurate after rename/move
 
 Always ask the user which path they want before writing files.
+
+### 6. User approval gate and linking execution
+
+After presenting proposed links, ask for explicit approval.
+
+- If user approves all: apply all proposed link edits
+- If user approves a subset: apply only selected links
+- If user requests changes: revise proposals and re-present
+- If user rejects: do not write changes
+
+When applying approved links:
+- Use Obsidian wiki-links (`[[Note Name]]` or `[[path/to/note|Label]]`) consistent with existing wiki style
+- Preserve note meaning; do not rewrite large sections just to inject links
+- Keep edits minimal and local to relevant lines
+- Avoid duplicate links to the same target in the same short section unless justified
+
+After applying links, report:
+- Files changed
+- Links added per file
+- Any skipped candidates and why
 
 ## Topic page format
 
@@ -126,3 +169,6 @@ review: false
 7. **Follow the wiki's existing structure** - Detect current section layout and index conventions; do not assume fixed folders like `Articles/` or `Books/`.
 8. **Keep topics source-agnostic** - Topic pages should live in a dedicated topics section (for example `Topics/`), not inside a source-type folder.
 9. **Treat path changes as migrations** - For rename/move operations, update inbound links and keep aliases aligned with old names.
+10. **Propose first, edit second** - Relationship links must be proposed and approved before writing.
+11. **Whole-wiki mindset** - Integration is not only for a new source; it also includes discovering missing links among existing notes.
+12. **High-value links only** - Prefer semantically meaningful links over dense cross-linking.

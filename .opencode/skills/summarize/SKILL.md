@@ -38,8 +38,6 @@ tags: []
 review: false
 ---
 
-<source link if available>
-
 # <Title>
 
 ## One sentence to remember
@@ -124,13 +122,8 @@ After the summary is complete, run a lightweight integration handoff using the `
 
 1. Identify where this summary should live in the user's wiki structure.
 2. List related existing notes or topic pages (if paths are available).
-3. Recommend one of these outcomes:
-   - Keep as a standalone source summary only.
-   - Add to an existing topic page.
-   - Create a new topic page once there are enough related sources.
-4. End with a short **Next integration action** section (2-4 bullets) so the user can immediately apply it.
-
-If the user did not provide wiki context or file paths, still provide a generic **Next integration action** section with assumptions clearly stated.
+3. Mention related docs in the knowledge base and ask if the author wants to link them. 
+4. If the author accepts, link related docs to each other.
 
 ## File naming
 
