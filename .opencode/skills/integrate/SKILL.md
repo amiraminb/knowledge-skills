@@ -8,7 +8,9 @@ metadata:
   workflow: source-to-topic-integration
 ---
 
-When the user reads, watches, or listens to something new, or asks for a wiki-wide integration pass, scan their entire knowledge base to find related content and suggest how to weave notes together with Obsidian wiki-links.
+When the user reads, watches, or listens to something new, or asks for a wiki-wide integration pass, find related content and suggest how to weave notes together with Obsidian wiki-links.
+
+Scope is intentionally limited to the user's "Knowledge is Power" area in `~/wiki/index.md` (or the wiki root `index.md` if `~/wiki/index.md` is not present). Treat only notes reachable from that section as in-scope for integration.
 
 ## Goal
 
@@ -21,18 +23,19 @@ And one ongoing practice:
 
 ## Steps
 
-### 1. Scan the whole knowledge base
+### 1. Scan only the "Knowledge is Power" scope
 
 First discover the current wiki structure instead of assuming one:
 - Confirm the wiki root from user input or infer it from provided file paths
-- Find `index.md` files and section directories (for example: source collections, topics, notes)
-- Read existing summaries and topic pages to understand what topics are covered
-- Identify where topic pages currently live, and treat that as canonical unless the user wants to change it
-- Include all relevant Markdown notes, not just newly added sources
+- Read `~/wiki/index.md` (or `<wiki-root>/index.md`) and locate the `## Knowledge is Power` header
+- Build the candidate set from links listed under that header (for example `Articles/index`, `Books/index`, `Mentorship/index`) and notes reachable from those indexes
+- Read existing summaries and topic pages within this scope to understand what topics are covered
+- Identify where topic pages currently live within this scope, and treat that as canonical unless the user wants to change it
+- Exclude notes outside this scope, even if they are topically related
 
-### 2. Find related content across all notes
+### 2. Find related content across in-scope notes
 
-For each candidate note, identify what other notes are related:
+For each in-scope candidate note, identify what other in-scope notes are related:
 - Direct topic matches (for example, new article about 1-on-1 meetings + existing 1-on-1 notes)
 - Overlapping concepts (for example, new article about feedback + existing notes on radical candor)
 - Complementary or opposing viewpoints
@@ -170,5 +173,6 @@ review: false
 8. **Keep topics source-agnostic** - Topic pages should live in a dedicated topics section (for example `Topics/`), not inside a source-type folder.
 9. **Treat path changes as migrations** - For rename/move operations, update inbound links and keep aliases aligned with old names.
 10. **Propose first, edit second** - Relationship links must be proposed and approved before writing.
-11. **Whole-wiki mindset** - Integration is not only for a new source; it also includes discovering missing links among existing notes.
+11. **Scoped-wiki mindset** - Integration is not only for a new source; it also includes discovering missing links among existing notes within the "Knowledge is Power" scope.
 12. **High-value links only** - Prefer semantically meaningful links over dense cross-linking.
+13. **Respect scope boundaries** - Do not include or propose links to notes outside the `## Knowledge is Power` section of the wiki index unless the user explicitly overrides this rule.
