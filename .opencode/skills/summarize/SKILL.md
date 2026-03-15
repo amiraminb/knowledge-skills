@@ -8,7 +8,7 @@ metadata:
   workflow: summarize-and-integrate
 ---
 
-Create a structured summary of content (article, book, book chapter, video, podcast, talk, etc.) for a personal knowledge wiki. The summary must be written so that re-reading it in 5 years brings the material back to life - not just the gist, but the important details, arguments, and examples. The summary should not be too long. It should be simple to read and to the point.
+Create a structured summary of content (article, book, book chapter, video, podcast, talk, etc.) for a personal knowledge wiki. The summary must be written so that re-reading it in 5 years brings the material back to life - not just the gist, but the important details, arguments, and examples. Keep it as short as possible without losing any context or data. It should be simple to read and to the point.
 
 ## Input
 
@@ -114,7 +114,8 @@ review: false
 6. **Capture counterarguments and nuance** - If the author addresses objections or edge cases, include them. Real understanding includes knowing the limits.
 7. **Write in plain direct language** - Short sentences. Active voice. No academic hedging.
 8. **Blockquote key takeaways** - Use `>` blockquotes for chapter/section takeaways to make them visually scannable.
-9. **Length should match depth** - A 5-minute article gets a focused summary. A 400-page book gets a thorough one. Don't compress a complex book into a page, and don't inflate a simple article into an essay.
+9. **Maximal compression, zero loss** - Make the summary as short as possible without losing context, arguments, or factual details.
+10. **Length should match depth** - A 5-minute article gets a focused summary. A 400-page book gets a thorough one. Don't compress a complex book into a page, and don't inflate a simple article into an essay.
 
 ## Integration step (at the end)
 
